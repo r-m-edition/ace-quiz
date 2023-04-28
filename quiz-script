@@ -1,0 +1,155 @@
+<script>
+  // add variables
+
+ $(document).ready(function() {
+
+    // Names are handled in Webflow Designer, these results names are used as a placeholder and guide for debugging
+    var results = ['Accounts', 'Strategy', 'Creative', 'Media', 'Production', 'PR', 'Developers'];
+
+    var score = [];
+
+    for (var i = 0; i < results.length; i++) {
+        score[i] = 0;
+    }
+
+    console.log('score init: ' + score);
+
+    // For single answer questions
+           
+    $(".btn").on( "click", function() {
+
+    // Set in Webflow as custom attributes on each answer
+
+    var meta1 = $( this ).attr( "accounts" );
+    var meta2 = $( this ).attr( "strategy" );
+    var meta3 = $( this ).attr( "creative" );
+    var meta4 = $( this ).attr( "media" );
+    var meta5 = $( this ).attr( "production" );
+    var meta6 = $( this ).attr( "pr" );
+    var meta7 = $( this ).attr( "developers" );
+
+    // Temporary array to loop through meta data for each question
+
+    var metaArray = [meta1, meta2, meta3, meta4, meta5, meta6, meta7];
+
+    for (var i = 0; i < metaArray.length; i++) {
+        metaArray[i] = metaArray[i] || 0;
+        score[i] += parseInt(metaArray[i]);
+    }
+
+    console.log('score = ' + score);
+
+    });
+
+    // Restart button
+
+    $('.restart').click(function() {
+        location.reload();
+    });
+
+
+    // Results begins
+
+    $('#calc .submit').click(function() {
+
+        // Finds index of max int in array, used to compute personality answer
+        // Essentially finding highest score in score array
+
+        function indexOfMax(arr) {
+            if (arr.length === 0) {
+                return -1;
+            };
+
+            var max = arr[0];
+            var maxIndex = 0;
+
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    maxIndex = i;
+                    max = arr[i];
+                };
+            };
+
+            return maxIndex;
+        };
+
+        $('#calc').fadeOut(1000);
+
+        console.log(indexOfMax(score));
+
+        switch (indexOfMax(score)) {
+            case 0:
+                $('#rone').delay(1100).fadeIn(500);;
+                break;
+            case 1:
+                $('#rtwo').delay(1100).fadeIn(500);
+                break;
+            case 2:
+                $('#rthree').delay(1100).fadeIn(500);
+                break;
+            case 3:
+                $('#rfour').delay(1100).fadeIn(500);
+                break;
+            case 4:
+                $('#rfive').delay(1100).fadeIn(500);
+                break;
+            case 5:
+                $('#rsix').delay(1100).fadeIn(500);
+                break;
+            case 6:
+                $('#rseven').delay(1100).fadeIn(500);
+                break;
+        }
+
+        // Add variables add results
+        $('#rintro').delay(1100).fadeIn(500);
+
+        });
+
+        // Results ends
+
+
+        // Fades in out
+
+        $('#intro > .btnintro').click(function() {
+            $('#intro').fadeOut(500);
+            $('#q1').delay(600).fadeIn(500);
+        });
+
+        $('#q1 > .btn').click(function() {
+            $('#q1').fadeOut(500);
+            $('#q2').delay(600).fadeIn(500);
+        });
+
+        $('#q2  > .btn').click(function() {
+            $('#q2').fadeOut(500);
+            $('#q3').delay(600).fadeIn(500);
+        });
+
+        $('#q3  > .btn').click(function() {
+            $('#q3').fadeOut(500);
+          $('#q4').delay(600).fadeIn(500);
+        });
+
+        $('#q4  > .btn').click(function() {
+            $('#q4').fadeOut(500);
+          $('#q5').delay(600).fadeIn(500);
+        });
+
+        $('#q5  > .btn').click(function() {
+            $('#q5').fadeOut(500);
+          $('#q6').delay(600).fadeIn(500);
+        });
+
+        $('#q6  > .btn').click(function() {
+            $('#q6').fadeOut(500);
+          $('#calc').delay(600).fadeIn(500);
+        });
+
+        $('#email-form > .submit').click(function() {
+            $('#calc').fadeOut(500);
+          $('#results').delay(600).fadeIn(500);
+        });
+});
+
+</script>
