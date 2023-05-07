@@ -1,5 +1,3 @@
-<script>
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const emailForm = document.querySelector("#email-form");
@@ -66,10 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateSubmitButton();
 });
-</script>
 
-<script>
-  // add variables
+// add variables
 
  $(document).ready(function() {
 
@@ -393,5 +389,3 @@ document.addEventListener("DOMContentLoaded", () => {
           $('#results').delay(600).fadeIn(500);
         });
 });
-
-</script>
