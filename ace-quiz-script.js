@@ -212,7 +212,77 @@ document.addEventListener("DOMContentLoaded", () => {
         $('#q9').delay(600).fadeIn(500);
         subtractPrevScore();
         console.log('score is now : ' + score + ' after back');
-    });              
+    });
+	 
+    $('#q11  > #backButton').click(function() {
+        $('#q11').fadeOut(500);
+        $('#10').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });
+
+    $('#q12  > #backButton').click(function() {
+        $('#q12').fadeOut(500);
+        $('#q11').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });
+
+    $('#q13  > #backButton').click(function() {
+        $('#q13').fadeOut(500);
+        $('#q12').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });
+
+    $('#q14  > #backButton').click(function() {
+        $('#q14').fadeOut(500);
+        $('#q13').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q15  > #backButton').click(function() {
+        $('#q15').fadeOut(500);
+        $('#q14').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q16  > #backButton').click(function() {
+        $('#q16').fadeOut(500);
+        $('#q15').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q17  > #backButton').click(function() {
+        $('#q17').fadeOut(500);
+        $('#q16').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q18  > #backButton').click(function() {
+        $('#q18').fadeOut(500);
+        $('#q17').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q19  > #backButton').click(function() {
+        $('#q19').fadeOut(500);
+        $('#q18').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });       
+
+    $('#q20  > #backButton').click(function() {
+        $('#q20').fadeOut(500);
+        $('#q19').delay(600).fadeIn(500);
+        subtractPrevScore();
+        console.log('score is now : ' + score + ' after back');
+    });    
 
 
     // Results begins
