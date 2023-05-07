@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
  $(document).ready(function() {
 
     // Names are handled in Webflow Designer, these results names are used as a placeholder and guide for debugging
-    var results = ['Accounts', 'Strategy', 'Creative', 'Media', 'Production', 'PR', 'Developers'];
+    var results = ['Accounts', 'Strategy', 'Creative', 'Media', 'Production', 'PR', 'Developer'];
 
     var score = [];
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var meta4 = $( this ).attr( "_media" );
     var meta5 = $( this ).attr( "_production" );
     var meta6 = $( this ).attr( "_pr" );
-    var meta7 = $( this ).attr( "_developers" );
+    var meta7 = $( this ).attr( "_developer" );
 
     // Temporary array to loop through meta data for each question
 
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         $('#q10  > .btn').click(function() {
             $('#q10').fadeOut(500);
-          $('#calc').delay(600).fadeIn(500);
+          $('#11').delay(600).fadeIn(500);
         });
         
          $('#q11 > .btn').click(function() {
