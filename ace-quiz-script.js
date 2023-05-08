@@ -77,11 +77,11 @@ var fadeDelay = 500;
     // Score at end determines result
     var score = [];
     // Tracks all scores
-    var allScores = [[]];
+    var allScores = [];
     // Total n of questions
     var nQuestions = 20;
     // Number representing current question
-    var currentQ = 1;
+    var currentQ = 0;
 
     function initScore(arr) {
 
@@ -94,36 +94,34 @@ var fadeDelay = 500;
 
     initScore(score);
 
-    console.log('score init: ' + score);
-
     // For single answer questions
            
     $(".btn").on( "click", function() {
 
-    // Set in Webflow as custom attributes on each answer
+        // Set in Webflow as custom attributes on each answer
 
-    var meta1 = $( this ).attr( "_accounts" );
-    var meta2 = $( this ).attr( "_strategy" );
-    var meta3 = $( this ).attr( "_creative" );
-    var meta4 = $( this ).attr( "_media" );
-    var meta5 = $( this ).attr( "_production" );
-    var meta6 = $( this ).attr( "_pr" );
-    var meta7 = $( this ).attr( "_developer" );
+        var meta1 = $( this ).attr( "_accounts" );
+        var meta2 = $( this ).attr( "_strategy" );
+        var meta3 = $( this ).attr( "_creative" );
+        var meta4 = $( this ).attr( "_media" );
+        var meta5 = $( this ).attr( "_production" );
+        var meta6 = $( this ).attr( "_pr" );
+        var meta7 = $( this ).attr( "_developer" );
 
-    // Temporary array to loop through meta data for each question
+        // Temporary array to loop through meta data for each question
 
-    var metaArray = [meta1, meta2, meta3, meta4, meta5, meta6, meta7];
+        var metaArray = [meta1, meta2, meta3, meta4, meta5, meta6, meta7];
 
-    for (var i = 0; i < metaArray.length; i++) {
-        // Parse data to integers, then update score
-        metaArray[i] = metaArray[i] || 0;
-        // Update overall score
-        score[i] += parseInt(metaArray[i]);
-    }
+        for (var i = 0; i < metaArray.length; i++) {
+            // Parse data to integers, then update score
+            metaArray[i] = metaArray[i] || 0;
+            // Update overall score
+            score[i] += parseInt(metaArray[i]);
+        }
 
-    allScores.push(score.slice());
-    console.log('allscores = ' + allScores + ' with type: ' + typeof allScores);
-    console.log('score = ' + score);
+        allScores.push(score);
+        console.log('allscores = ' + allScores + ' with type: ' + typeof allScores);
+        console.log('score = ' + score);
 
     });
 
@@ -144,7 +142,6 @@ var fadeDelay = 500;
         var prevScores = allScores[currentQ - 1];
         for (var i = 0; i < score.length; i++) {
             score[i] -= prevScores[i];
-	    currentQ--;	
         }
     }
 
@@ -154,7 +151,8 @@ var fadeDelay = 500;
         $('#intro').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q2  > #backButton').click(function() {
@@ -162,7 +160,8 @@ var fadeDelay = 500;
         $('#q1').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q3  > #backButton').click(function() {
@@ -170,7 +169,8 @@ var fadeDelay = 500;
         $('#q2').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q4  > #backButton').click(function() {
@@ -178,7 +178,8 @@ var fadeDelay = 500;
         $('#q3').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q5  > #backButton').click(function() {
@@ -186,7 +187,8 @@ var fadeDelay = 500;
         $('#q4').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q6  > #backButton').click(function() {
@@ -194,6 +196,8 @@ var fadeDelay = 500;
         $('#q5').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q7  > #backButton').click(function() {
@@ -201,6 +205,8 @@ var fadeDelay = 500;
         $('#q6').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q8  > #backButton').click(function() {
@@ -208,6 +214,8 @@ var fadeDelay = 500;
         $('#q7').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q9  > #backButton').click(function() {
@@ -215,6 +223,8 @@ var fadeDelay = 500;
         $('#q8').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q10  > #backButton').click(function() {
@@ -222,6 +232,8 @@ var fadeDelay = 500;
         $('#q9').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 	 
     $('#q11  > #backButton').click(function() {
@@ -229,6 +241,8 @@ var fadeDelay = 500;
         $('#10').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q12  > #backButton').click(function() {
@@ -236,6 +250,8 @@ var fadeDelay = 500;
         $('#q11').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q13  > #backButton').click(function() {
@@ -243,6 +259,8 @@ var fadeDelay = 500;
         $('#q12').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });
 
     $('#q14  > #backButton').click(function() {
@@ -250,6 +268,8 @@ var fadeDelay = 500;
         $('#q13').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q15  > #backButton').click(function() {
@@ -257,6 +277,8 @@ var fadeDelay = 500;
         $('#q14').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q16  > #backButton').click(function() {
@@ -264,6 +286,8 @@ var fadeDelay = 500;
         $('#q15').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q17  > #backButton').click(function() {
@@ -271,6 +295,8 @@ var fadeDelay = 500;
         $('#q16').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q18  > #backButton').click(function() {
@@ -278,6 +304,8 @@ var fadeDelay = 500;
         $('#q17').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q19  > #backButton').click(function() {
@@ -285,6 +313,8 @@ var fadeDelay = 500;
         $('#q18').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });       
 
     $('#q20  > #backButton').click(function() {
@@ -292,6 +322,8 @@ var fadeDelay = 500;
         $('#q19').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
+        console.log('currentQ = ' + currentQ);
     });    
 
 
@@ -362,121 +394,140 @@ var fadeDelay = 500;
         $('#intro > .btnintro').click(function() {
             $('#intro').fadeOut(fadeDelay);
             $('#q1').delay(delay).fadeIn(fadeDelay);
-            currentQ += 1;
+            console.log('currentQ = ' + currentQ);
         });
 
         $('#q1 > .btn').click(function() {
             $('#q1').fadeOut(fadeDelay);
             $('#q2').delay(delay).fadeIn(fadeDelay);
-            currentQ += 1;
+            currentQ++;
+            console.log('currentQ = ' + currentQ);
         });
 
         $('#q2  > .btn').click(function() {
             $('#q2').fadeOut(fadeDelay);
             $('#q3').delay(delay).fadeIn(fadeDelay);
-            currentQ += 1;
+            currentQ++;
+            console.log('currentQ = ' + currentQ);
         });
 
         $('#q3  > .btn').click(function() {
             $('#q3').fadeOut(fadeDelay);
           $('#q4').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q4  > .btn').click(function() {
             $('#q4').fadeOut(fadeDelay);
           $('#q5').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q5  > .btn').click(function() {
             $('#q5').fadeOut(fadeDelay);
           $('#q6').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q6  > .btn').click(function() {
             $('#q6').fadeOut(fadeDelay);
           $('#q7').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q7  > .btn').click(function() {
             $('#q7').fadeOut(fadeDelay);
           $('#q8').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q8  > .btn').click(function() {
             $('#q8').fadeOut(fadeDelay);
           $('#q9').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q9  > .btn').click(function() {
             $('#q9').fadeOut(fadeDelay);
           $('#q10').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q10  > .btn').click(function() {
             $('#q10').fadeOut(fadeDelay);
           $('#11').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
         
          $('#q11 > .btn').click(function() {
             $('#q11').fadeOut(fadeDelay);
             $('#q12').delay(delay).fadeIn(fadeDelay);
-            currentQ += 1;
+            currentQ++;
+            console.log('currentQ = ' + currentQ);
         });
 
         $('#q12  > .btn').click(function() {
             $('#q12').fadeOut(fadeDelay);
             $('#q13').delay(delay).fadeIn(fadeDelay);
-            currentQ += 1;
+            currentQ++;
+            console.log('currentQ = ' + currentQ);
         });
 
         $('#q13  > .btn').click(function() {
             $('#q13').fadeOut(fadeDelay);
           $('#q14').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q14  > .btn').click(function() {
             $('#q14').fadeOut(fadeDelay);
           $('#q15').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q15  > .btn').click(function() {
             $('#q15').fadeOut(fadeDelay);
           $('#q16').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q16  > .btn').click(function() {
             $('#q16').fadeOut(fadeDelay);
           $('#q17').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q17  > .btn').click(function() {
             $('#q17').fadeOut(fadeDelay);
           $('#q18').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q18  > .btn').click(function() {
             $('#q18').fadeOut(fadeDelay);
           $('#q19').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q19  > .btn').click(function() {
             $('#q19').fadeOut(fadeDelay);
           $('#q20').delay(delay).fadeIn(fadeDelay);
-          currentQ += 1;
+          currentQ++;
+          console.log('currentQ = ' + currentQ);
         });
 
         $('#q20  > .btn').click(function() {
