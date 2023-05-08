@@ -1,5 +1,3 @@
-// TESTING
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const emailForm = document.querySelector("#email-form");
@@ -69,14 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // add variables
 
+var delay = 600;
+var fadeDelay = 500;
+
  $(document).ready(function() {
 
     // Names are handled in Webflow Designer, these results names are used as a placeholder and guide for debugging
     var results = ['Accounts', 'Strategy', 'Creative', 'Media', 'Production', 'PR', 'Developer'];
-
+    // Score at end determines result
     var score = [];
-
-    var prevScore = [];
+    // Tracks all scores
+    var allScores = [];
+    // Total n of questions
+    var nQuestions = 20;
+    // Number representing current question
+    var currentQ = 0;
 
     function initScore(arr) {
 
@@ -112,15 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
     for (var i = 0; i < metaArray.length; i++) {
         // Parse data to integers, then update score
         metaArray[i] = metaArray[i] || 0;
+        // Update allScores to set each time a q is answered 
+        allScores[i] = parseInt(metaArray[i]);
         // Update overall score
         score[i] += parseInt(metaArray[i]);
-
     }
-   
-    prevScore += score;
-    
+
+    allScores += score;
+    console.log('allscores = ' + allScores + ' with type: ' + typeof allScores);
     console.log('score = ' + score);
-    console.log('prevScore = ' + prevScore);
 
     });
 
@@ -128,164 +133,180 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $('.restart').click(function() {
         $('#rone, #rtwo, #rthree, #rfour, #rfive, #rsix, #rseven').each(function(){
-            $(this).fadeOut(500);
+            $(this).fadeOut(fadeDelay);
         });
-        $('#intro').delay(600).fadeIn(500);
+        $('#intro').delay(delay).fadeIn(fadeDelay);
         initScore(score);
     });
 
     // Back button
-    // Subtract metaArray (last q score) from score array, but check first if metaArray exists i.e. is after q1
-    
-    var subtractedPrevScore = [];       
+    // Subtract score array associated with question from score array, but check first if metaArray exists i.e. is after q1    
 
-    function subtractPrevScore() {        
+    function goBack() {        
         for (var i = 0; i <= score.length-1 ; i++) {
-		console.log('during subtract, score = ' + score + ' prevScore = ' + prevScore);
-            score[i] = (score[i] - prevScore[i]);
+            score[i] = (score[i] - allScores[i]);
         }   
     };
 
-    console.log(subtractedPrevScore);
 
     $('#q1  > #backButton').click(function() {
-        $('#q1').fadeOut(500);
-        $('#intro').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q1').fadeOut(fadeDelay);
+        $('#intro').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q2  > #backButton').click(function() {
-        $('#q2').fadeOut(500);
-        $('#q1').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q2').fadeOut(fadeDelay);
+        $('#q1').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q3  > #backButton').click(function() {
-        $('#q3').fadeOut(500);
-        $('#q2').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q3').fadeOut(fadeDelay);
+        $('#q2').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q4  > #backButton').click(function() {
-        $('#q4').fadeOut(500);
-        $('#q3').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q4').fadeOut(fadeDelay);
+        $('#q3').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q5  > #backButton').click(function() {
-        $('#q5').fadeOut(500);
-        $('#q4').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q5').fadeOut(fadeDelay);
+        $('#q4').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q6  > #backButton').click(function() {
-        $('#q6').fadeOut(500);
-        $('#q5').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q6').fadeOut(fadeDelay);
+        $('#q5').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q7  > #backButton').click(function() {
-        $('#q7').fadeOut(500);
-        $('#q6').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q7').fadeOut(fadeDelay);
+        $('#q6').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q8  > #backButton').click(function() {
-        $('#q8').fadeOut(500);
-        $('#q7').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q8').fadeOut(fadeDelay);
+        $('#q7').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q9  > #backButton').click(function() {
-        $('#q9').fadeOut(500);
-        $('#q8').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q9').fadeOut(fadeDelay);
+        $('#q8').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q10  > #backButton').click(function() {
-        $('#q10').fadeOut(500);
-        $('#q9').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q10').fadeOut(fadeDelay);
+        $('#q9').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 	 
     $('#q11  > #backButton').click(function() {
-        $('#q11').fadeOut(500);
-        $('#10').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q11').fadeOut(fadeDelay);
+        $('#10').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q12  > #backButton').click(function() {
-        $('#q12').fadeOut(500);
-        $('#q11').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q12').fadeOut(fadeDelay);
+        $('#q11').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q13  > #backButton').click(function() {
-        $('#q13').fadeOut(500);
-        $('#q12').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q13').fadeOut(fadeDelay);
+        $('#q12').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });
 
     $('#q14  > #backButton').click(function() {
-        $('#q14').fadeOut(500);
-        $('#q13').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q14').fadeOut(fadeDelay);
+        $('#q13').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q15  > #backButton').click(function() {
-        $('#q15').fadeOut(500);
-        $('#q14').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q15').fadeOut(fadeDelay);
+        $('#q14').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q16  > #backButton').click(function() {
-        $('#q16').fadeOut(500);
-        $('#q15').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q16').fadeOut(fadeDelay);
+        $('#q15').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q17  > #backButton').click(function() {
-        $('#q17').fadeOut(500);
-        $('#q16').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q17').fadeOut(fadeDelay);
+        $('#q16').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q18  > #backButton').click(function() {
-        $('#q18').fadeOut(500);
-        $('#q17').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q18').fadeOut(fadeDelay);
+        $('#q17').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q19  > #backButton').click(function() {
-        $('#q19').fadeOut(500);
-        $('#q18').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q19').fadeOut(fadeDelay);
+        $('#q18').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });       
 
     $('#q20  > #backButton').click(function() {
-        $('#q20').fadeOut(500);
-        $('#q19').delay(600).fadeIn(500);
-        subtractPrevScore();
+        $('#q20').fadeOut(fadeDelay);
+        $('#q19').delay(delay).fadeIn(fadeDelay);
+        goBack();
         console.log('score is now : ' + score + ' after back');
+        currentQ -= 1;
     });    
 
 
@@ -321,30 +342,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (indexOfMax(score)) {
             case 0:
-                $('#rone').delay(1100).fadeIn(500);;
+                $('#rone').delay(1100).fadeIn(fadeDelay);;
                 break;
             case 1:
-                $('#rtwo').delay(1100).fadeIn(500);
+                $('#rtwo').delay(1100).fadeIn(fadeDelay);
                 break;
             case 2:
-                $('#rthree').delay(1100).fadeIn(500);
+                $('#rthree').delay(1100).fadeIn(fadeDelay);
                 break;
             case 3:
-                $('#rfour').delay(1100).fadeIn(500);
+                $('#rfour').delay(1100).fadeIn(fadeDelay);
                 break;
             case 4:
-                $('#rfive').delay(1100).fadeIn(500);
+                $('#rfive').delay(1100).fadeIn(fadeDelay);
                 break;
             case 5:
-                $('#rsix').delay(1100).fadeIn(500);
+                $('#rsix').delay(1100).fadeIn(fadeDelay);
                 break;
             case 6:
-                $('#rseven').delay(1100).fadeIn(500);
+                $('#rseven').delay(1100).fadeIn(fadeDelay);
                 break;
         }
 
         // Add variables add results
-        $('#rintro').delay(1100).fadeIn(500);
+        $('#rintro').delay(1100).fadeIn(fadeDelay);
 
         });
 
@@ -354,112 +375,132 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fades in out
 
         $('#intro > .btnintro').click(function() {
-            $('#intro').fadeOut(500);
-            $('#q1').delay(600).fadeIn(500);
+            $('#intro').fadeOut(fadeDelay);
+            $('#q1').delay(delay).fadeIn(fadeDelay);
+            currentQ += 1;
         });
 
         $('#q1 > .btn').click(function() {
-            $('#q1').fadeOut(500);
-            $('#q2').delay(600).fadeIn(500);
+            $('#q1').fadeOut(fadeDelay);
+            $('#q2').delay(delay).fadeIn(fadeDelay);
+            currentQ += 1;
         });
 
         $('#q2  > .btn').click(function() {
-            $('#q2').fadeOut(500);
-            $('#q3').delay(600).fadeIn(500);
+            $('#q2').fadeOut(fadeDelay);
+            $('#q3').delay(delay).fadeIn(fadeDelay);
+            currentQ += 1;
         });
 
         $('#q3  > .btn').click(function() {
-            $('#q3').fadeOut(500);
-          $('#q4').delay(600).fadeIn(500);
+            $('#q3').fadeOut(fadeDelay);
+          $('#q4').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q4  > .btn').click(function() {
-            $('#q4').fadeOut(500);
-          $('#q5').delay(600).fadeIn(500);
+            $('#q4').fadeOut(fadeDelay);
+          $('#q5').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q5  > .btn').click(function() {
-            $('#q5').fadeOut(500);
-          $('#q6').delay(600).fadeIn(500);
+            $('#q5').fadeOut(fadeDelay);
+          $('#q6').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q6  > .btn').click(function() {
-            $('#q6').fadeOut(500);
-          $('#q7').delay(600).fadeIn(500);
+            $('#q6').fadeOut(fadeDelay);
+          $('#q7').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q7  > .btn').click(function() {
-            $('#q7').fadeOut(500);
-          $('#q8').delay(600).fadeIn(500);
+            $('#q7').fadeOut(fadeDelay);
+          $('#q8').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q8  > .btn').click(function() {
-            $('#q8').fadeOut(500);
-          $('#q9').delay(600).fadeIn(500);
+            $('#q8').fadeOut(fadeDelay);
+          $('#q9').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q9  > .btn').click(function() {
-            $('#q9').fadeOut(500);
-          $('#q10').delay(600).fadeIn(500);
+            $('#q9').fadeOut(fadeDelay);
+          $('#q10').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q10  > .btn').click(function() {
-            $('#q10').fadeOut(500);
-          $('#11').delay(600).fadeIn(500);
+            $('#q10').fadeOut(fadeDelay);
+          $('#11').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
         
          $('#q11 > .btn').click(function() {
-            $('#q11').fadeOut(500);
-            $('#q12').delay(600).fadeIn(500);
+            $('#q11').fadeOut(fadeDelay);
+            $('#q12').delay(delay).fadeIn(fadeDelay);
+            currentQ += 1;
         });
 
         $('#q12  > .btn').click(function() {
-            $('#q12').fadeOut(500);
-            $('#q13').delay(600).fadeIn(500);
+            $('#q12').fadeOut(fadeDelay);
+            $('#q13').delay(delay).fadeIn(fadeDelay);
+            currentQ += 1;
         });
 
         $('#q13  > .btn').click(function() {
-            $('#q13').fadeOut(500);
-          $('#q14').delay(600).fadeIn(500);
+            $('#q13').fadeOut(fadeDelay);
+          $('#q14').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q14  > .btn').click(function() {
-            $('#q14').fadeOut(500);
-          $('#q15').delay(600).fadeIn(500);
+            $('#q14').fadeOut(fadeDelay);
+          $('#q15').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q15  > .btn').click(function() {
-            $('#q15').fadeOut(500);
-          $('#q16').delay(600).fadeIn(500);
+            $('#q15').fadeOut(fadeDelay);
+          $('#q16').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q16  > .btn').click(function() {
-            $('#q16').fadeOut(500);
-          $('#q17').delay(600).fadeIn(500);
+            $('#q16').fadeOut(fadeDelay);
+          $('#q17').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q17  > .btn').click(function() {
-            $('#q17').fadeOut(500);
-          $('#q18').delay(600).fadeIn(500);
+            $('#q17').fadeOut(fadeDelay);
+          $('#q18').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q18  > .btn').click(function() {
-            $('#q18').fadeOut(500);
-          $('#q19').delay(600).fadeIn(500);
+            $('#q18').fadeOut(fadeDelay);
+          $('#q19').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q19  > .btn').click(function() {
-            $('#q19').fadeOut(500);
-          $('#q20').delay(600).fadeIn(500);
+            $('#q19').fadeOut(fadeDelay);
+          $('#q20').delay(delay).fadeIn(fadeDelay);
+          currentQ += 1;
         });
 
         $('#q20  > .btn').click(function() {
-            $('#q20').fadeOut(500);
-          $('#calc').delay(600).fadeIn(500);
+            $('#q20').fadeOut(fadeDelay);
+          $('#calc').delay(delay).fadeIn(fadeDelay);
         });
 
         $('#email-form > .submit').click(function() {
-            $('#calc').fadeOut(500);
-          $('#results').delay(600).fadeIn(500);
+            $('#calc').fadeOut(fadeDelay);
+          $('#results').delay(delay).fadeIn(fadeDelay);
         });
 });
