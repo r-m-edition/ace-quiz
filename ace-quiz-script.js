@@ -77,7 +77,7 @@ var fadeDelay = 500;
     // Score at end determines result
     var score = [];
     // Tracks all scores
-    var allScores = [];
+    var allScores = [[]];
     // Total n of questions
     var nQuestions = 20;
     // Number representing current question
@@ -121,7 +121,7 @@ var fadeDelay = 500;
         score[i] += parseInt(metaArray[i]);
     }
 
-    allScores.push(score);
+    allScores.push(score.slice());
     console.log('allscores = ' + allScores + ' with type: ' + typeof allScores);
     console.log('score = ' + score);
 
