@@ -1,3 +1,70 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    const emailForm = document.querySelector("#email-form");
+    const submitButton = document.querySelector("#submit-button");
+    const emailErrorMessage = document.querySelector("#email-error-message");
+        if (!emailForm || !submitButton) {
+        return;
+    }
+
+    let emailIsValid = false;
+
+    const validateEmail = (value) => {
+        const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/;
+        if (value.match(emailValidation)) {
+            return true;
+        }
+        return false;
+    };
+    const applyInvalidStyles = (el) => {
+        el.classList.remove("input-valid-state");
+        el.classList.add("input-error-state");
+    };
+    const applyValidStyle = (el) => {
+        el.classList.remove("input-error-state");
+        el.classList.add("input-valid-state");
+    };
+    const disableSubmitButton = () => {
+        submitButton.disabled = true;
+        submitButton.classList.add("submit-disabled-state");
+    };
+    const enableSubmitButton = () => {
+        submitButton.disabled = false;
+        submitButton.classList.remove("submit-disabled-state");
+    };
+    const showEmailError = () => {
+        emailErrorMessage.classList.remove("hidden");
+    };
+    const hideEmailError = () => {
+        emailErrorMessage.classList.add("hidden");
+    };
+    const updateSubmitButton = () => {
+        if (emailIsValid) {
+            enableSubmitButton();
+        }
+        else {
+            disableSubmitButton();
+        }
+    };
+
+    emailForm.addEventListener("input", (event) => {
+        const emailFormValue = event.target.value;
+        if (validateEmail(emailFormValue)) {
+            emailIsValid = true;
+            applyValidStyle(emailForm);
+            hideEmailError(emailForm);
+        }
+        else {
+            emailIsValid = false;
+            applyInvalidStyles(emailForm);
+            showEmailError(emailForm);
+        }
+        updateSubmitButton();
+    });
+
+    updateSubmitButton();
+});
+
 // add variables
 
 var delay = 600;
@@ -7,6 +74,13 @@ var fadeDelay = 500;
 
     // Names are handled in Webflow Designer, these results names are used as a placeholder and guide for debugging
     var results = ['Accounts', 'Strategy', 'Creative', 'Media', 'Production', 'PR', 'Developer'];
+    // Question IDs to loop
+     var questionIds = [
+       "#q1", "#q2", "#q3", "#q4", "#q5",
+       "#q6", "#q7", "#q8", "#q9", "#q10",
+       "#q11", "#q12", "#q13", "#q14", "#q15",
+       "#q16", "#q17", "#q18", "#q19", "#q20"
+     ];
     // Score at end determines result
     var score = [];
     // Tracks all scores
@@ -29,8 +103,8 @@ var fadeDelay = 500;
     
     function initAllScores(arr) {
     
-    	for (var i = 0; i < nQuestions; i++) {
-      	allScores.push([]);
+        for (var i = 0; i < nQuestions; i++) {
+        allScores.push([]);
       }
     }
     
@@ -62,10 +136,6 @@ var fadeDelay = 500;
             allScores[currentQ].push(parseInt(metaArray[i]));
         }
 
-				// allScores[currentQ - 1] = score;
-        console.log('score: ' + score);
-        console.log('allScores: ' + allScores);
-
     });
 
     // Restart button
@@ -88,134 +158,30 @@ var fadeDelay = 500;
             score[i] -= prevScore[i];
         }
         currentQ -= 1;
-        console.log('going back, prevScore: ' + prevScore);
-      	console.log('going back, score: ' + score);	
-      	console.log('score is now: ' + score + ' after back');
-        console.log('currentQ is now:' + currentQ);
+        // console.log('score is now: ' + score + ' after back');
+        // console.log('currentQ is now:' + currentQ) + ' after back';
     }
-
-
+    
+    // Handle back to intro
     $('#q1  > #backButton').click(function() {
         $('#q1').fadeOut(fadeDelay);
         $('#intro').delay(delay).fadeIn(fadeDelay);
-        console.log('score is now : ' + score + ' after back');
-        console.log('currentQ = ' + currentQ);
+        // console.log('score is now : ' + score + ' after back');
+      	// console.log('currentQ = ' + currentQ + ' after back');
         currentQ -= 1;
     });
 
-    $('#q2  > #backButton').click(function() {
-        $('#q2').fadeOut(fadeDelay);
-        $('#q1').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-
-    $('#q3  > #backButton').click(function() {
-        $('#q3').fadeOut(fadeDelay);
-        $('#q2').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-
-    $('#q4  > #backButton').click(function() {
-        $('#q4').fadeOut(fadeDelay);
-        $('#q3').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q5  > #backButton').click(function() {
-        $('#q5').fadeOut(fadeDelay);
-        $('#q4').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q6  > #backButton').click(function() {
-        $('#q6').fadeOut(fadeDelay);
-        $('#q5').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q7  > #backButton').click(function() {
-        $('#q7').fadeOut(fadeDelay);
-        $('#q6').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q8  > #backButton').click(function() {
-        $('#q8').fadeOut(fadeDelay);
-        $('#q7').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q9  > #backButton').click(function() {
-        $('#q9').fadeOut(fadeDelay);
-        $('#q8').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q10  > #backButton').click(function() {
-        $('#q10').fadeOut(fadeDelay);
-        $('#q9').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-	 
-    $('#q11  > #backButton').click(function() {
-        $('#q11').fadeOut(fadeDelay);
-        $('#10').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-
-    $('#q12  > #backButton').click(function() {
-        $('#q12').fadeOut(fadeDelay);
-        $('#q11').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-
-    $('#q13  > #backButton').click(function() {
-        $('#q13').fadeOut(fadeDelay);
-        $('#q12').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });
-
-    $('#q14  > #backButton').click(function() {
-        $('#q14').fadeOut(fadeDelay);
-        $('#q13').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q15  > #backButton').click(function() {
-        $('#q15').fadeOut(fadeDelay);
-        $('#q14').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q16  > #backButton').click(function() {
-        $('#q16').fadeOut(fadeDelay);
-        $('#q15').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q17  > #backButton').click(function() {
-        $('#q17').fadeOut(fadeDelay);
-        $('#q16').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q18  > #backButton').click(function() {
-        $('#q18').fadeOut(fadeDelay);
-        $('#q17').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q19  > #backButton').click(function() {
-        $('#q19').fadeOut(fadeDelay);
-        $('#q18').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });       
-
-    $('#q20  > #backButton').click(function() {
-        $('#q20').fadeOut(fadeDelay);
-        $('#q19').delay(delay).fadeIn(fadeDelay);
-        goBack();
-    });    
+    // Use a loop to add the click event handler to each back button
+    for (let i = 1; i < questionIds.length; i++) {
+        const currentId = questionIds[i];
+        const prevId = questionIds[i - 1];
+        const backButton = $(`${currentId} > #backButton`);
+        backButton.click(() => {
+            $(currentId).fadeOut(fadeDelay);
+            $(prevId).delay(delay).fadeIn(fadeDelay);
+            goBack();
+        });
+    }
 
 
     // Results begins
@@ -275,9 +241,7 @@ var fadeDelay = 500;
         // Add variables add results
         $('#rintro').delay(1100).fadeIn(fadeDelay);
 
-        });
-
-        // Results ends
+    });	
 
 
         // Fades in out
@@ -286,142 +250,22 @@ var fadeDelay = 500;
             $('#intro').fadeOut(fadeDelay);
             $('#q1').delay(delay).fadeIn(fadeDelay);
             currentQ++;
-            console.log('currentQ = ' + currentQ);
+            // console.log('currentQ = ' + currentQ);
         });
 
-        $('#q1 > .btn').click(function() {
-            $('#q1').fadeOut(fadeDelay);
-            $('#q2').delay(delay).fadeIn(fadeDelay);
-            currentQ++;
-            console.log('currentQ = ' + currentQ);
+        // use a loop to bind the click event to each question
+        questionIds.forEach(function(questionId, index) {
+          $(questionId + " > .btn").click(function() {
+            $(questionId).fadeOut(fadeDelay);
+            if (index < questionIds.length - 1) {
+              var nextQuestionId = questionIds[index + 1];
+              $(nextQuestionId).delay(delay).fadeIn(fadeDelay);
+              currentQ++;
+              // console.log("currentQ = " + currentQ);
+            }
+          });
         });
-
-        $('#q2  > .btn').click(function() {
-            $('#q2').fadeOut(fadeDelay);
-            $('#q3').delay(delay).fadeIn(fadeDelay);
-            currentQ++;
-            console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q3  > .btn').click(function() {
-            $('#q3').fadeOut(fadeDelay);
-          $('#q4').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q4  > .btn').click(function() {
-            $('#q4').fadeOut(fadeDelay);
-          $('#q5').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q5  > .btn').click(function() {
-            $('#q5').fadeOut(fadeDelay);
-          $('#q6').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q6  > .btn').click(function() {
-            $('#q6').fadeOut(fadeDelay);
-          $('#q7').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q7  > .btn').click(function() {
-            $('#q7').fadeOut(fadeDelay);
-          $('#q8').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q8  > .btn').click(function() {
-            $('#q8').fadeOut(fadeDelay);
-          $('#q9').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q9  > .btn').click(function() {
-            $('#q9').fadeOut(fadeDelay);
-          $('#q10').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q10  > .btn').click(function() {
-            $('#q10').fadeOut(fadeDelay);
-          $('#q11').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-        
-         $('#q11 > .btn').click(function() {
-            $('#q11').fadeOut(fadeDelay);
-            $('#q12').delay(delay).fadeIn(fadeDelay);
-            currentQ++;
-            console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q12  > .btn').click(function() {
-            $('#q12').fadeOut(fadeDelay);
-            $('#q13').delay(delay).fadeIn(fadeDelay);
-            currentQ++;
-            console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q13  > .btn').click(function() {
-            $('#q13').fadeOut(fadeDelay);
-          $('#q14').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q14  > .btn').click(function() {
-            $('#q14').fadeOut(fadeDelay);
-          $('#q15').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q15  > .btn').click(function() {
-            $('#q15').fadeOut(fadeDelay);
-          $('#q16').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q16  > .btn').click(function() {
-            $('#q16').fadeOut(fadeDelay);
-          $('#q17').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q17  > .btn').click(function() {
-            $('#q17').fadeOut(fadeDelay);
-          $('#q18').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q18  > .btn').click(function() {
-            $('#q18').fadeOut(fadeDelay);
-          $('#q19').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
-        $('#q19  > .btn').click(function() {
-            $('#q19').fadeOut(fadeDelay);
-          $('#q20').delay(delay).fadeIn(fadeDelay);
-          currentQ++;
-          console.log('currentQ = ' + currentQ);
-        });
-
+       
         $('#q20  > .btn').click(function() {
             $('#q20').fadeOut(fadeDelay);
           $('#calc').delay(delay).fadeIn(fadeDelay);
