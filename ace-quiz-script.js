@@ -117,8 +117,6 @@ var fadeDelay = 500;
     for (var i = 0; i < metaArray.length; i++) {
         // Parse data to integers, then update score
         metaArray[i] = metaArray[i] || 0;
-        // Update allScores to set each time a q is answered 
-        allScores[i] = parseInt(metaArray[i]);
         // Update overall score
         score[i] += parseInt(metaArray[i]);
     }
