@@ -111,16 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
     for (var i = 0; i < metaArray.length; i++) {
         // Parse data to integers, then update score
         metaArray[i] = metaArray[i] || 0;
-        // Update prevScore to set each time a q is answered 
-        prevScore[i] = parseInt(metaArray[i]);
         // Update overall score
         score[i] += parseInt(metaArray[i]);
-	// Update prevScore
-	prevScore.push(parseInt(metaArray[i]));
-	console.log('prevScore = ' +prevScore);
+	
+	prevScore.push(score);
     }
 
     console.log('score = ' + score);
+    console.log('prevScore = ' + prevScore);
 
     });
 
