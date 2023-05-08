@@ -115,6 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
         prevScore[i] = parseInt(metaArray[i]);
         // Update overall score
         score[i] += parseInt(metaArray[i]);
+	// Update prevScore
+	prevScore.push(parseInt(metaArray[i]));
+	console.log('prevScore = ' +prevScore);
     }
 
     console.log('score = ' + score);
