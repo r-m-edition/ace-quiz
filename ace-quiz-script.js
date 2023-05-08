@@ -146,6 +146,8 @@ var fadeDelay = 500;
         });
         $('#intro').delay(delay).fadeIn(fadeDelay);
         initScore(score);
+        initAllScores(allScores);
+        
     });
 
     // Back button
