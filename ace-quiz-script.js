@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
    
     prevScore += score;
-    console.log(prevScore);
     
     console.log('score = ' + score);
     console.log('prevScore = ' + prevScore);
@@ -142,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function subtractPrevScore() {        
         for (var i = 0; i <= score.length-1 ; i++) {
+		console.log('during subtract, score = ' + score + ' prevScore = ' + prevScore);
             score[i] = (score[i] - prevScore[i]);
         }   
     };
