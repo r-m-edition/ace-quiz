@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $('#q1').fadeOut(500);
         $('#intro').delay(600).fadeIn(500);
         subtractPrevScore();
-        console.log('score is now : ' + score + ' after back!');
+        console.log('score is now : ' + score + ' after back');
     });
 
     $('#q2  > #backButton').click(function() {
