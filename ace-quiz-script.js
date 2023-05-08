@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailForm = document.querySelector("#email-form");
     const submitButton = document.querySelector("#submit-button");
     const emailErrorMessage = document.querySelector("#email-error-message");
-		if (!emailForm || !submitButton) {
+	if (!emailForm || !submitButton) {
         return;
     }
 
