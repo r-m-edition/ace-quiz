@@ -121,7 +121,7 @@ var fadeDelay = 500;
         score[i] += parseInt(metaArray[i]);
     }
 
-    allScores += score;
+    allScores.push(score);
     console.log('allscores = ' + allScores + ' with type: ' + typeof allScores);
     console.log('score = ' + score);
 
@@ -140,11 +140,12 @@ var fadeDelay = 500;
     // Back button
     // Subtract score array associated with question from score array, but check first if metaArray exists i.e. is after q1    
 
-    function goBack() {        
-        for (var i = 0; i <= score.length-1 ; i++) {
-            score[i] = (score[i] - allScores[i]);
-        }   
-    };
+    function goBack() {
+        var prevScores = allScores[currentQ - 1];
+        for (var i = 0; i < score.length; i++) {
+            score[i] -= prevScores[i];
+        }
+    }
 
 
     $('#q1  > #backButton').click(function() {
