@@ -1,3 +1,5 @@
+// TESTING
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const emailForm = document.querySelector("#email-form");
