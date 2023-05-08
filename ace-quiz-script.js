@@ -81,7 +81,7 @@ var fadeDelay = 500;
     // Total n of questions
     var nQuestions = 20;
     // Number representing current question
-    var currentQ = 0;
+    var currentQ = 1;
 
     function initScore(arr) {
 
@@ -144,6 +144,7 @@ var fadeDelay = 500;
         var prevScores = allScores[currentQ - 1];
         for (var i = 0; i < score.length; i++) {
             score[i] -= prevScores[i];
+	    currentQ--;	
         }
     }
 
@@ -153,7 +154,7 @@ var fadeDelay = 500;
         $('#intro').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
+	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
     });
 
     $('#q2  > #backButton').click(function() {
@@ -161,7 +162,7 @@ var fadeDelay = 500;
         $('#q1').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
+	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
     });
 
     $('#q3  > #backButton').click(function() {
@@ -169,7 +170,7 @@ var fadeDelay = 500;
         $('#q2').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
+    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
     });
 
     $('#q4  > #backButton').click(function() {
@@ -177,7 +178,7 @@ var fadeDelay = 500;
         $('#q3').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
+    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
     });       
 
     $('#q5  > #backButton').click(function() {
@@ -185,7 +186,7 @@ var fadeDelay = 500;
         $('#q4').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
+    	console.log('previous score was: ' + allScores[currentQ - 1] + '?');
     });       
 
     $('#q6  > #backButton').click(function() {
@@ -193,7 +194,6 @@ var fadeDelay = 500;
         $('#q5').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q7  > #backButton').click(function() {
@@ -201,7 +201,6 @@ var fadeDelay = 500;
         $('#q6').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q8  > #backButton').click(function() {
@@ -209,7 +208,6 @@ var fadeDelay = 500;
         $('#q7').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q9  > #backButton').click(function() {
@@ -217,7 +215,6 @@ var fadeDelay = 500;
         $('#q8').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q10  > #backButton').click(function() {
@@ -225,7 +222,6 @@ var fadeDelay = 500;
         $('#q9').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });
 	 
     $('#q11  > #backButton').click(function() {
@@ -233,7 +229,6 @@ var fadeDelay = 500;
         $('#10').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });
 
     $('#q12  > #backButton').click(function() {
@@ -241,7 +236,6 @@ var fadeDelay = 500;
         $('#q11').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });
 
     $('#q13  > #backButton').click(function() {
@@ -249,7 +243,6 @@ var fadeDelay = 500;
         $('#q12').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });
 
     $('#q14  > #backButton').click(function() {
@@ -257,7 +250,6 @@ var fadeDelay = 500;
         $('#q13').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q15  > #backButton').click(function() {
@@ -265,7 +257,6 @@ var fadeDelay = 500;
         $('#q14').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q16  > #backButton').click(function() {
@@ -273,7 +264,6 @@ var fadeDelay = 500;
         $('#q15').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q17  > #backButton').click(function() {
@@ -281,7 +271,6 @@ var fadeDelay = 500;
         $('#q16').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q18  > #backButton').click(function() {
@@ -289,7 +278,6 @@ var fadeDelay = 500;
         $('#q17').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q19  > #backButton').click(function() {
@@ -297,7 +285,6 @@ var fadeDelay = 500;
         $('#q18').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });       
 
     $('#q20  > #backButton').click(function() {
@@ -305,7 +292,6 @@ var fadeDelay = 500;
         $('#q19').delay(delay).fadeIn(fadeDelay);
         goBack();
         console.log('score is now : ' + score + ' after back');
-        currentQ -= 1;
     });    
 
 
